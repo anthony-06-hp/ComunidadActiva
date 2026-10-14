@@ -39,7 +39,11 @@ export default function Lista() {
 
       <div className="list-toolbar">
         <div>
-          <strong>{eventos.length}</strong> {eventos.length === 1 ? "evento registrado" : "eventos registrados"}
+          {!cargando && !error &&(
+            <>
+              <strong>{eventos.length}</strong> {eventos.length === 1 ? "evento registrado" : "eventos registrados"}
+            </>
+          )}
         </div>
         <button className="button button-secondary button-small" onClick={cargarEventos} disabled={cargando}>
           {cargando ? "Actualizando..." : "↻ Actualizar lista"}
