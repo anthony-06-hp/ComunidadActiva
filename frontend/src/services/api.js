@@ -11,17 +11,24 @@ async function procesarRespuesta(respuesta) {
   return datos;
 }
 
-export async function obtenerRegistros() {
-  const respuesta = await fetch(`${API_URL}/registros`);
+async function peticion(url, opciones) {
+  let respuesta;
+  try {
+    respuesta = await fetch(url, opciones);
+  } catch {
+    throw new Error("No se pudo conectar con el servidor. Verifica que el backend esté activo.");
+  }
   return procesarRespuesta(respuesta);
 }
 
-export async function crearRegistro(evento) {
-  const respuesta = await fetch(`${API_URL}/registros`, {
+export function obtenerRegistros() {
+  return peticion(`${API_URL}/registros`);
+}
+
+export function crearRegistro(evento) {
+  return peticion(`${API_URL}/registros`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(evento)
   });
-
-  return procesarRespuesta(respuesta);
 }
