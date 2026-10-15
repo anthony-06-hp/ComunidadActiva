@@ -47,6 +47,25 @@ function validarEvento(datos) {
     errores.push("Selecciona una categoría permitida.");
   }
 
+  const LIMITES = {
+    nombre: 100,
+    organizador: 100,
+    email: 150,
+    descripcion: 1000
+  };
+
+  for (const [campo, max] of Object.entries(LIMITES)) {
+    if (
+      typeof datos[campo] === "string" &&
+      datos[campo].trim().length > max
+    ) {
+      errores.push(
+        `El campo "${campo}" no puede superar los ${max} caracteres.`
+      );
+    }
+  }
+
+
   return errores;
 }
 
