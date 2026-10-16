@@ -2,22 +2,7 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Registro from "./pages/Registro.jsx";
 import Lista from "./pages/Lista.jsx";
-
-function Navbar() {
-  return (
-    <header className="topbar">
-      <NavLink to="/" className="brand">
-        <span className="brand-mark">CA</span>
-        <span>Comunidad <strong>Activa</strong></span>
-      </NavLink>
-      <nav aria-label="Navegación principal">
-        <NavLink to="/" end>Inicio</NavLink>
-        <NavLink to="/registro">Registrar evento</NavLink>
-        <NavLink to="/lista">Eventos</NavLink>
-      </nav>
-    </header>
-  );
-}
+import Navbar from "./components/Navbar.jsx";
 
 export default function App() {
   return (
